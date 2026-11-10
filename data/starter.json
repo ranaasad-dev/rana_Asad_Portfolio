@@ -1,0 +1,182 @@
+{
+  "profile": {
+    "name": "Rana Asad Arshad",
+    "short_name": "Rana Asad",
+    "headline": "BSCS Student | Aspiring Data Analyst",
+    "intro": "Learning to turn data into practical solutions. My toolkit includes Python, SQL, Microsoft Excel and Microsoft Word, backed by six months of data entry experience at Cappersoft.",
+    "about": "I am pursuing a Bachelor of Computer Science at Superior University Lahore. I have six months of experience as a Data Entry Operator at Cappersoft.\n\nAlongside my studies, I have a background in private and institutional teaching and tutoring across O Level, A Level and Punjab Board curricula.\n\nI am developing my skills in Python, SQL, Microsoft Excel and Microsoft Word, with an interest in data analysis and practical automation.",
+    "email": "ajtech.dev17@gmail.com",
+    "phone": "",
+    "phone_alt": "",
+    "location": "Lahore, Pakistan",
+    "languages": "Urdu, English",
+    "github": "https://github.com/ranaasad-dev",
+    "linkedin": "https://www.linkedin.com/in/rana-asad-arshad-pk",
+    "whatsapp": "923401640693",
+    "photo": "assets/portrait.webp",
+    "cv": "assets/original-cv.pdf",
+    "availability": "Open to internships & learning opportunities",
+    "seo_description": "Rana Asad Arshad: BSCS student, aspiring data analyst, Python, SQL, Excel and Word. Explore my skills, experience and academic work.",
+    "footer_note": "Learning with purpose. Building with care.",
+    "brand_label": "Rana Asad",
+    "logo": ""
+  },
+  "settings": {
+    "show_about": true,
+    "show_skills": true,
+    "show_experience": true,
+    "show_projects": true,
+    "show_education": true,
+    "show_certificates": true,
+    "show_contact": true,
+    "show_feedback": true,
+    "comments_enabled": true,
+    "messages_enabled": true,
+    "email_mode": "gmail"
+  },
+  "items": [
+    {
+      "kind": "skills",
+      "title": "Python",
+      "data": {
+        "category": "Programming",
+        "description": "Python programming and continued practice.",
+        "badge": "Py"
+      },
+      "visible": true,
+      "position": 10
+    },
+    {
+      "kind": "skills",
+      "title": "SQL",
+      "data": {
+        "category": "Databases",
+        "description": "Working with structured data and database queries.",
+        "badge": "SQL"
+      },
+      "visible": true,
+      "position": 20
+    },
+    {
+      "kind": "skills",
+      "title": "Microsoft Excel",
+      "data": {
+        "category": "Spreadsheets",
+        "description": "Working with spreadsheets and organized records.",
+        "badge": "XLS"
+      },
+      "visible": true,
+      "position": 30
+    },
+    {
+      "kind": "skills",
+      "title": "Microsoft Word",
+      "data": {
+        "category": "Documentation",
+        "description": "Preparing and formatting documents.",
+        "badge": "DOC"
+      },
+      "visible": true,
+      "position": 40
+    },
+    {
+      "kind": "experience",
+      "title": "Data Entry Operator",
+      "data": {
+        "organization": "Cappersoft",
+        "period": "6 months",
+        "description": "Six months of professional experience as a Data Entry Operator.",
+        "details": "",
+        "status": "Previous role"
+      },
+      "visible": true,
+      "position": 10
+    },
+    {
+      "kind": "experience",
+      "title": "Teaching & Private Tutoring",
+      "data": {
+        "organization": "Private and institutional teaching",
+        "period": "3 years of home tuition",
+        "description": "Mathematics teaching experience at Allied School (Raiwind Campus) and Unique Science Academy, Kot Radha Kishan.",
+        "details": "O Level: Mathematics, Computer Science, Statistics, Physics and Urdu.\nA Level: Mathematics, Computer Science and Physics.\nPunjab Boards: Pre-Engineering and ICS subjects.",
+        "status": "Teaching experience"
+      },
+      "visible": true,
+      "position": 20
+    },
+    {
+      "kind": "education",
+      "title": "Bachelor of Computer Science",
+      "data": {
+        "institution": "Superior University Lahore",
+        "period": "Currently studying",
+        "description": "BSCS student.",
+        "badge": "BSCS"
+      },
+      "visible": true,
+      "position": 10
+    },
+    {
+      "kind": "education",
+      "title": "Pre-Engineering",
+      "data": {
+        "institution": "Govt. Inter College for Boys, Kot Radha Kishan, District Kasur",
+        "period": "",
+        "description": "Pre-Engineering education.",
+        "badge": "FSc"
+      },
+      "visible": true,
+      "position": 20
+    },
+    {
+      "kind": "projects",
+      "title": "Smart ID Card & Face Verification System",
+      "data": {
+        "summary": "An academic team project exploring ID-card information extraction, face matching and liveness checks.",
+        "description": "The project explores how ID-card information and face verification could support digital identity checks.\n\nThe documented team role is Backend / AI. This listing describes the academic project scope; no public live demonstration or completed implementation is claimed.",
+        "technologies": "Python, Database design, Identity verification",
+        "role": "Backend / AI (documented team role)",
+        "status": "Academic project",
+        "repository": "",
+        "demo": "",
+        "image": ""
+      },
+      "visible": true,
+      "position": 10
+    },
+    {
+      "kind": "projects",
+      "title": "Data Entry Automation Tool",
+      "data": {
+        "summary": "Planned: clean duplicate records, check missing values and export a review report.",
+        "description": "Draft idea only. Build and test the tool before publishing this project.",
+        "technologies": "Python, Excel",
+        "role": "Personal project",
+        "status": "Planned",
+        "repository": "",
+        "demo": "",
+        "image": ""
+      },
+      "visible": false,
+      "position": 20
+    },
+    {
+      "kind": "projects",
+      "title": "Excel Sales Dashboard",
+      "data": {
+        "summary": "Planned: explore a sample sales dataset and present a clear summary dashboard.",
+        "description": "Draft idea only. Add an actual workbook, screenshot and findings after completing the work.",
+        "technologies": "Microsoft Excel",
+        "role": "Personal project",
+        "status": "Planned",
+        "repository": "",
+        "demo": "",
+        "image": ""
+      },
+      "visible": false,
+      "position": 30
+    }
+  ],
+  "comments": []
+}

@@ -1,0 +1,25 @@
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from './config.js';
+export const BASE = new URL('../', import.meta.url).href;
+export const CONFIGURED = SUPABASE_URL.startsWith('https://') && !SUPABASE_PUBLISHABLE_KEY.includes('PASTE_');
+export const db = CONFIGURED ? createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}}): null;
+export const $ = (s,root=document)=>root.querySelector(s);
+export const esc = (v)=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+export const safeUrl = (u)=> {const s=String(u||'').trim();if (!s) return ''; try { const x=new URL(s,BASE); return ['http:','https:'].includes(x.protocol)?x.href:'';}catch{return ''} };
+export const mediaUrl = (v)=>{let s=String(v||'').trim();if(!s)return '';if(s.startsWith('assets/'))return BASE+s;if(s.startsWith('/assets/'))return BASE+s.slice(1);return safeUrl(s)};
+export const icon=(name)=>{const paths={arrow:'<path d="M5 12h14m-6-6 6 6-6 6"/>',external:'<path d="M8 3H3v18h18v-5M12 3h9v9M9 15 21 3"/>',download:'<path d="M12 3v12m-5-5 5 5 5-5M3 15v6h18v-6"/>',github:'<path d="M8 21v-4c-5 1-5-2-7-3m15 7v-4c0-1-.4-1.7-1-2 4-.5 6-2 6-6 0-1.5-.5-2.5-1.5-3.5.5-1.5.5-2.5 0-3.5-2 0-3.5 1-4 1.5-2-.5-4-.5-6 0C9 3 7.5 2 5.5 2c-.5 1-.5 2 0 3.5C4.5 6.5 4 7.5 4 9c0 4 2 5.5 6 6-.6.3-1 1-1 2v4"/>',linkedin:'<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 10v7m0-10v.01M11 17v-7m0 3c0-4 6-4 6 0v4"/>',menu:'<path d="M4 6h16M4 12h16M4 18h16"/>',mail:'<rect x="2" y="4" width="20" height="16" rx="3"/><path d="m2 6 10 7L22 6"/>',phone:'<path d="M7 3H3c-1 11 7 19 18 18v-4l-5-2-2 2c-4-2-5-3-7-7l2-2-2-5Z"/>',code:'<path d="m8 5-6 7 6 7m8-14 6 7-6 7m-3-17-2 20"/>',education:'<path d="m2 8 10-5 10 5-10 5L2 8Zm4 3v6c4 3 8 3 12 0v-6m4-3v9"/>',user:'<circle cx="12" cy="8" r="4"/><path d="M4 21v-2a8 8 0 0 1 16 0v2"/>',image:'<rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8" cy="8" r="2"/><path d="m3 18 6-6 4 4 3-3 5 5"/>',grid:'<rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/>',folder:'<path d="M3 7V5a2 2 0 0 1 2-2h5l3 4h6a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z"/>',briefcase:'<rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 7V3h8v4M3 12a23 23 0 0 0 18 0m-9 0v4"/>',award:'<circle cx="12" cy="8" r="5"/><path d="m8 12-2 9 6-3 6 3-2-9"/>',comment:'<path d="M21 11a9 9 0 0 1-9 9H4l-3 2 2-6a9 9 0 1 1 18-5Z"/><path d="M7 9h10M7 13h6"/>',settings:'<path d="M3 6h18M3 12h18M3 18h18"/><circle cx="8" cy="6" r="2"/><circle cx="16" cy="12" r="2"/><circle cx="10" cy="18" r="2"/>',lock:'<rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V6a4 4 0 0 1 8 0v4m-4 4v3"/>',clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l4 2"/>',eye:'<path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12Z"/><circle cx="12" cy="12" r="3"/>',plus:'<path d="M12 4v16M4 12h16"/>',edit:'<path d="m16 3 5 5-12 12-6 1 1-6L16 3Zm-2 2 5 5"/>',check:'<path d="m4 12 5 5L20 6"/>',logout:'<path d="M9 3H3v18h6m-1-9h13m-5-5 5 5-5 5"/>'};return `<svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${paths[name]||paths.check}</svg>`};
+export async function loadData({all=false}={}) {
+ if(!db){const r=await fetch(BASE+'data/starter.json');if(!r.ok)throw Error('Starter data missing');return {...await r.json(),demo:true};}
+ const [p,s,i,c]=await Promise.all([
+  db.from('portfolio_profile').select('data').eq('id',1).single(),
+  db.from('portfolio_settings').select('data').eq('id',1).single(),
+  db.from('portfolio_items').select('*').order('position',{ascending:true}).order('id',{ascending:false}).limit(500),
+  db.from('portfolio_approved_comments').select('*').order('created_at',{ascending:false}).limit(60)
+ ]);
+ for(const r of [p,s,i,c])if(r.error)throw r.error;
+ return {profile:p.data?.data||{},settings:s.data?.data||{},items:i.data||[],comments:c.data||[],demo:false};
+}
+export function link(href,text,cl='text-link'){return safeUrl(href)?`<a class="${cl}" href="${esc(safeUrl(href))}" target="_blank" rel="noopener noreferrer">${text}</a>`:''}
+export function installNav(){document.querySelectorAll('[data-menu]').forEach(btn=>{const panel=document.getElementById(btn.dataset.menu);if(!panel)return;btn.addEventListener('click',()=>{const open=panel.classList.toggle('is-open');btn.setAttribute('aria-expanded',String(open))});panel.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{panel.classList.remove('is-open');btn.setAttribute('aria-expanded','false')}))});}
+export function emailHref(email){return `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email||'')}&su=${encodeURIComponent('Portfolio Inquiry')}`}
+export function waHref(value){const d=String(value||'').replace(/\D/g,'');return d?`https://wa.me/${d}`:''}
